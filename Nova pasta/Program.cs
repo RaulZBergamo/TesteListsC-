@@ -43,6 +43,57 @@ namespace Nova_pasta
             {
                 Console.WriteLine("E o aluno foi reprovado");
             }
+
+            rendimentoMeses();
+        }
+
+        static void rendimentoMeses()
+        {
+            Console.WriteLine("Digite o nome do empregado: ");
+            string nome = Console.ReadLine();
+
+            List<int> rendimento = new List<int>(){};
+
+            string[] meses = new string[]
+            {
+                "Janeiro",
+                "Fevereiro",
+                "Março",
+                "Abril",
+                "Maio"
+            };
+
+            for(int i = 0; i <= 4; i++)
+            {
+                Console.WriteLine($"Qual o rendimento para o mês de {meses[i]}: ");
+                rendimento.Add(Convert.ToInt32(Console.ReadLine()));
+            }
+
+            Console.Clear();
+            
+            int rendimentoTotal = rendimento.Sum(x => Convert.ToInt32(x));
+
+            int rendimentoMedio = rendimentoTotal / 5;
+
+            Console.WriteLine($"Rendimentos para o funcionario {nome} foram de: ");
+
+            Console.WriteLine($"Um rendimento total de: {rendimentoTotal}");
+            Console.WriteLine($"Um rendimento medio de: {rendimentoMedio}");
+
+            Console.WriteLine(verificarRendimento(rendimentoMedio));
+
+        }
+
+        static string verificarRendimento(int rendimentoMedio)
+        {
+            if(rendimentoMedio >= 5500)
+            {
+                return "Vendedor aprovado !";
+            }
+            else
+            {
+                return "Vendedor abaixo da media !";
+            }
         }
     }
 }
